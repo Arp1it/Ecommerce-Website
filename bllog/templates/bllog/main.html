@@ -1,0 +1,51 @@
+{% extends 'bllog/base.html' %}
+
+{% block body %}
+
+<div class="container my-2">
+  <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
+    <div class="col-md-6 px-0">
+      <h1 class="display-4 font-italic">Title of a longer featured blog post</h1>
+      <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently
+        about what’s most interesting in this post’s contents.</p>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-3">
+  <div class="row my-3">
+
+    {% for items in myposts %}
+    <div class="col-md-6">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-primary">{{items.title}}</strong>
+          <h3 class="mb-0">{{items.head0}}</h3>
+          <div class="mb-1 text-muted">Nov 12</div>
+          <p class="card-text mb-auto">{{items.head0content}}</p>
+          <a href="blogpost/{{items.post_id}}" class="stretched-link">Continue reading</a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <img src="/media/{{items.thumbnail}}" class="bd-placeholder-img" width="200" height="250">
+        </div>
+      </div>
+    </div>
+    {% if forloop.counter|divisibleby:2 %}
+    </div>
+    {% endif %}
+
+    {% endfor %}
+    </div>
+
+  </div>
+
+  <!-- {% load static %}
+    <a href="{% static 'bllog/mystatic.txt' %}"> Click me </a> -->
+
+    <!-- 
+            <title>Placeholder</title>
+            <rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef"
+              dy=".3em">Thumbnail</text>
+          </svg> -->
+
+  {% endblock %}
